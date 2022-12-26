@@ -1,0 +1,45 @@
+CREATE TABLE IF NOT EXISTS pacient(
+nume varchar(30) NOT NULL,
+prenume varchar(30),
+varsta decimal(3),
+telefon varchar(10),
+localitate varchar(30),
+email varchar(30),
+CONSTRAINT pacient_nume_pk PRIMARY KEY (nume));
+
+CREATE TABLE IF NOT EXISTS reteta(
+id decimal(3) NOT NULL,
+nume_pacient varchar(30) NOT NULL,
+diagnostic varchar(100),
+medicamente varchar(200),
+durata decimal(3),
+data_intocmire date,
+CONSTRAINT reteta_id_pk PRIMARY KEY (id),
+CONSTRAINT reteta_nume_pacient_fk FOREIGN KEY pacient(nume));
+
+CREATE TABLE IF NOT EXISTS internare(
+id decimal(3) NOT NULL,
+nume_pacient varchar(30) NOT NULL,
+nume_medic varchar(30) NOT NULL,
+data_intrare date,
+data_iesire date,
+in_progres bool,
+departament varchar(100),
+CONSTRAINT internare_id_pk PRIMARY KEY(id),
+CONSTRAINT internare_nume_pacient_fk FOREIGN KEY pacient(nume),
+CONSTRAINT internare_nume_medic_fk FOREIGN KEY medic(nume));
+
+CREATE TABLE IF NOT EXISTS medic(
+nume varchar(30) NOT NULL,
+prenume varchar(30),
+varsta decimal(3),
+telefon varchar(10),
+email varchar(50),
+CONSTRAINT medic_nume_pk PRIMARY KEY(nume));
+
+CREATE TABLE IF NOT EXISTS departament(
+nume_medic varchar(30) NOT NULL,
+nume_departament varchar(100) NOT NULL,
+corp_cladire varchar(30),
+numar_saloane decimal(2),
+CONSTRAINT departament_nume_medic_pk PRIMARY KEY(nume_medic));

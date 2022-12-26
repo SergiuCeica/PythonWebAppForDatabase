@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{%block content %}
+    <br>
+    <h1>This is the home page</h1>  
+    <button><a href="/populare/">Populare</a></button>     
+    <button><a href="/afisare/pacient">Afisare Pacienti</a></button>
+    <button><a href="/afisare/reteta">Afisare Retete</a></button>  
+    <button><a href="/afisare/internare">Afisare Internari</a></button>  
+    <button><a href="/afisare/medic">Afisare Medici</a></button>  
+    <button><a href="/afisare/departament">Afisare Departamente</a></button><br>
+
+    {% block tabel%}    
+
+    {%endblock%}
+{%endblock%}

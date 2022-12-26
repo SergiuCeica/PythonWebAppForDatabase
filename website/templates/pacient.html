@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+{% block title %}Pacienti{% endblock %}
+{% block tabel%}
+    {% for row in rows %}
+        <p>
+            <b>Nume: </b>{{row[1]}} {{row[2]}}, <b>Varsta: </b>{{row[3]}} <br>
+            <b>Telefon: </b>{{row[4]}}, <b>Localitate:</b>{{row[5]}}, <b>E-mail: </b>{{row[6]}}
+            <button type="button" class="close"><a href="/stergere/pacient/{{row[0]}}">X</a></button>
+        </p>
+        <hr>
+    {% endfor %}
+
+    <form method="POST" action="/cautare/pacient">
+        <input type="text" name="nume_pacient" placeholder="Nume pacient">
+        <button type="submit">Cautare Pacient</button>
+    </form><br>      
+    <form method="POST" action="/adaugare/pacient">
+        <input type="text" name="nume_pacient" placeholder="Nume">
+        <input type="text" name="prenume_pacient" placeholder="Prenume">
+        <input type="text" name="varsta_pacient" placeholder="Varsta">
+        <input type="text" name="telefon_pacient" placeholder="Telefon">
+        <input type="text" name="localitate_pacient" placeholder="Localitate">
+        <input type="text" name="email_pacient" placeholder="Email">
+        <button type="submit">Adaugare Pacient</button>
+    </form>
+{%endblock%}

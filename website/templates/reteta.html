@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+{% block title %}Retete{% endblock %}
+
+{% block tabel%}
+    {% for row in rows %}
+        <p>
+            <b>Diagnostic: </b>{{row[0]}}, 
+            <b>Medicamente: </b>{{row[1]}},
+            <b>Durata tratament: </b>{{row[2]}}<br>
+            <b>Data intocmire: </b>{{row[3]}}<br><b>Pacient: </b>{{row[4]}} {{row[5]}}, <b>Telefon: </b>{{row[6]}}
+            <button type="button" class="close" onclick="deleteInterogation()">X</button>
+            <br>
+        </p>
+        <hr>
+    {% endfor %}
+
+    <form method="POST" action="/cautare/reteta">
+        <input type="text" name="nume_pacient" placeholder="Nume Pacient">
+        <button type="submit">Cautare reteta</button>
+    </form><br>  
+    <form method="POST" action="/adaugare/reteta">
+        <select name="pacienti">
+            {% for pacient in listaPacienti %}
+                <option value="{{pacient}}">{{pacient}}</option>
+            {% endfor %}
+          </select>
+        <input type="text" name="diagnostic" placeholder="Diagnostic">
+        <input type="text" name="medicamente" placeholder="Medicamente">
+        <input type="text" name="durata_timp" placeholder="Durata tratamentului">
+        <input type="date" name="data" placeholder="Data">
+        <button type="submit">Adaugare Reteta</button>
+    </form>
+{%endblock%}

@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+{% block title %}Medici{% endblock %}
+
+{% block tabel%}
+    {% for row in rows %}
+        <p>
+            <b>Nume: </b>{{row[1]}},  <b>Prenume: </b>{{row[2]}}, <b>Varsta: </b>{{row[3]}} <br>
+            <b>Telefon: </b>{{row[4]}}, <b>E-mail: </b>{{row[5]}}
+            <button type="button" class="close">X</button>
+        </p>
+        <hr>
+    {% endfor %}
+    <form method="POST" action="/cautare/medic">
+        <input type="text" name="nume_pacient" placeholder="Nume medic">
+        <button type="submit">Cautare Medic</button>
+    </form><br>      
+    <form method="POST" action="/adaugare/pacient">
+        <input type="text" name="nume_medic" placeholder="Nume">
+        <input type="text" name="prenume_medic" placeholder="Prenume">
+        <input type="text" name="varsta_medic" placeholder="Varsta">
+        <input type="text" name="telefon_medic" placeholder="Telefon">
+        <input type="text" name="email_medic" placeholder="Email">
+        <button type="submit">Adaugare Medic</button>
+    </form>
+{%endblock%}

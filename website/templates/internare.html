@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+{% block title %}Internare{% endblock %}
+
+{% block tabel%}
+    {% for row in rows %}
+        <p>
+            <b>Data internarii: </b>{{row[0]}} - <b>Data externarii: </b>{{row[1]}}<br>
+            <b>Nume pacient: </b>{{row[2]}} {{row[3]}}, <b>Nume medic: </b>{{row[4]}} {{row[5]}}<br>
+            <b>Departament: </b>{{row[6]}}
+            <button type="button" class="close">X</button>
+        </p>
+        <hr>
+    {% endfor %}
+
+    <form method="POST" action="/cautare/internare">
+        <input type="text" name="nume_pacient" placeholder="Nume pacient">
+        <button type="submit">Cautare Internare</button>
+    </form><br>      
+    <form method="POST" action="/adaugare/internare">
+        <select name="pacienti">
+            {% for pacient in listaPacienti %}
+                <option value="{{pacient}}">{{pacient}}</option>
+            {% endfor %}
+          </select>
+          <select name="medici">
+            {% for medic in listaMedici %}
+                <option value="{{medic}}">{{medic}}</option>
+            {% endfor %}
+          </select>
+          <select name="departamente">
+            {% for departament in listaDepartamente %}
+                <option value="{{departament}}">{{departament}}</option>
+            {% endfor %}
+          </select>
+        <input type="date" name="datein" placeholder="Date-In">
+        <input type="date" name="dateout" placeholder="Date-Out">
+        <button type="submit">Adaugare Internare</button>
+    </form>
+{%endblock%}

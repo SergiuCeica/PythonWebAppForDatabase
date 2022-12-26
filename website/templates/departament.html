@@ -1,0 +1,24 @@
+{% extends "home.html" %}
+{% block title %}Departamente{% endblock %}
+
+{% block tabel%}
+    {% for row in rows %}
+        <p>
+            <b>Nume departament: </b>{{row[1]}},  <b>Corp: </b>{{row[2]}} <br>
+            <b>Numar saloane: </b>{{row[3]}}
+            <button type="button" class="close">X</button>
+        </p>
+        <hr>
+    {% endfor %}
+
+    <form method="POST" action="/cautare/departament">
+        <input type="text" name="nume_pacient" placeholder="Nume departament">
+        <button type="submit">Cautare Departament</button>
+    </form><br>      
+    <form method="POST" action="/adaugare/pacient">
+        <input type="text" name="nume_departament" placeholder="Nume Departament">
+        <input type="text" name="corp_departament" placeholder="Corp Departament">
+        <input type="text" name="numar_saloane" placeholder="Numar Saloane">
+        <button type="submit">Adaugare Departament</button>
+    </form>
+{%endblock%}
